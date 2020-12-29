@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 
@@ -29,4 +24,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('order/create', 'API\OrderController@create');
     Route::put('order/{id}/completed', 'API\OrderController@makeCompleted');
     Route::put('order/{id}/cancel', 'API\OrderController@makeCancel');
+    // Applications
+    Route::post('application/create/by-order-id/{id}', 'API\ApplicationController@create');
+    Route::put('application/accept/{id}', 'API\ApplicationController@acceptApplication');
 });

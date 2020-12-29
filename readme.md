@@ -88,3 +88,23 @@ Content-Type:application/x-www-form-urlencoded
 Accept:application/json
 
 ---
+
+**Create an application by order**
+http://localhost:8000/api/application/create/by-order-id/1
+*Headers*
+
+Authorization:Bearer point_your_token
+Content-Type:application/x-www-form-urlencoded
+Accept:application/json
+
+---
+
+**Accept an application**
+http://localhost:8000/api/application/accept/1
+*Headers*
+
+Authorization:Bearer point_your_token
+Content-Type:application/x-www-form-urlencoded
+Accept:application/json
+
+---

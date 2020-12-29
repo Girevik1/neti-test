@@ -20,7 +20,7 @@ class OrderController extends Controller
     {
         $orders = Order::get();
         if ($orders == null) return response(json_encode([
-            'message' => 'Заказы не найдены'
+            'message' => 'Orders not found'
         ], 404));
 
         return response(json_encode([
@@ -35,10 +35,12 @@ class OrderController extends Controller
      */
     public function getById(Request $request)
     {
-        $order = Order::where('id', $request->id)->first();
+        $order = Order::where('id', $request->id)
+            ->with('user')
+            ->first();
 
         if ($order == null) return response(json_encode([
-            'message' => 'Заказ не найден'
+            'message' => 'Order not found'
         ], 404));
 
         return response(json_encode([
